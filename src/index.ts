@@ -39,7 +39,7 @@ switch (command) {
         }
         break;
       default:
-        console.log("Usage: fast-express <command> [options]");
+        console.log("Usage: express-deploy <command> [options]");
         console.log("Commands:");
         console.log(
           "  init <project-name>   - Initialize a new Express project with boilerplate"
@@ -55,7 +55,7 @@ switch (command) {
     break;
 
   default:
-    console.log("Usage: fast-express <command> [options]");
+    console.log("Usage: express-deploy <command> [options]");
     console.log("Commands:");
     console.log(
       "  init <project-name>   - Initialize a new Express project with boilerplate"

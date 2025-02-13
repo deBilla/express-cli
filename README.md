@@ -1,4 +1,4 @@
-# Cloud Functions Init CLI With Boilerplate (`express-cli`)
+# Cloud Functions Init CLI With Boilerplate (`express-deploy`)
 
 A simple CLI tool to initialize a Express project with a custom boilerplate, add modules, and add Express services.
 
@@ -17,21 +17,21 @@ A simple CLI tool to initialize a Express project with a custom boilerplate, add
 To install the CLI globally, run:
 
 ```bash
-npm install -g express-cli
+npm install -g express-deploy
 ```
 
 ## 🔧 Usage
 Run the CLI by using the following command:
 
 ```
-express-cli <command> [options]
+express-deploy <command> [options]
 ```
 
 ## Commands:
 Initialize the project
 
 ```
-express-cli init <project-name>
+express-deploy init <project-name>
 ```
 
 Go inside the project to functions folder
@@ -49,9 +49,9 @@ yarn install
 Add a Module
 
 ```
-express-cli add module user
+express-deploy add module user
 ```
 
 
 
-# express-cli
+# express-deploy

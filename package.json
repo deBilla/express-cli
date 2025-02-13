@@ -1,10 +1,10 @@
 {
-  "name": "fast-express",
+  "name": "express-deploy",
   "version": "1.0.0",
   "description": "A CLI to initialize Express project with boilerplate code",
   "main": "dist/index.js",
   "bin": {
-    "fast-express": "./dist/index.js"
+    "express-deploy": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
