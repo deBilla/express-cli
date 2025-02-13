@@ -1,4 +1,4 @@
-# Cloud Functions Init CLI With Boilerplate (`express-deploy`)
+# Express Init CLI With Boilerplate (`express-deploy`)
 
 A simple CLI tool to initialize a Express project with a custom boilerplate, add modules, and add Express services.
 
