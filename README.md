@@ -1,12 +1,12 @@
-# Cloud Functions Init CLI With Boilerplate (`gcf-cli`)
+# Cloud Functions Init CLI With Boilerplate (`express-cli`)
 
-A simple CLI tool to initialize a Firebase project with a custom boilerplate, add modules, and add Firebase services.
+A simple CLI tool to initialize a Express project with a custom boilerplate, add modules, and add Express services.
 
 ## 🚀 Features
 
-- Initializes a Firebase project with a predefined boilerplate.
-- Adds modules to an existing Firebase project.
-- Adds Firebase services (e.g., Firestore, Functions) to the project.
+- Initializes a Express project with a predefined boilerplate.
+- Adds modules to an existing Express project.
+- Adds Express services (e.g., Firestore, Functions) to the project.
 - Fully written in TypeScript.
 
 ---
@@ -17,21 +17,21 @@ A simple CLI tool to initialize a Firebase project with a custom boilerplate, ad
 To install the CLI globally, run:
 
 ```bash
-npm install -g gcf-cli
+npm install -g express-cli
 ```
 
 ## 🔧 Usage
 Run the CLI by using the following command:
 
 ```
-gcf-cli <command> [options]
+express-cli <command> [options]
 ```
 
 ## Commands:
 Initialize the project
 
 ```
-gcf-cli init <project-name>
+express-cli init <project-name>
 ```
 
 Go inside the project to functions folder
@@ -49,7 +49,7 @@ yarn install
 Add a Module
 
 ```
-gcf-cli add module user
+express-cli add module user
 ```
 
 
