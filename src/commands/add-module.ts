@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import axios from "axios";
 import fs from "fs-extra";
 import path from "path";
@@ -53,7 +51,27 @@ export async function addModule(moduleName: string): Promise<void> {
   console.log(`Fetching module '${moduleName}' from GitHub...`);
   await fetchFilesFromGitHub(GITHUB_REPO_URL, targetDir, moduleName);
 
-  console.log(`✅ Module '${moduleName}' added successfully.`);
+  // Update src/index.ts to include the new module
+  const indexTsPath = path.join(process.cwd(), "src", "index.ts");
+  let indexTsContent = await fs.readFile(indexTsPath, "utf8");
+
+  // Add import statement for the new module
+  const importStatement = `import ${capitalize(moduleName)}Router from "./modules/${moduleName}/${moduleName}.route";\n`;
+  if (!indexTsContent.includes(importStatement)) {
+    indexTsContent = importStatement + indexTsContent;
+  }
+
+  // Add app.use() for the new module after app.use(express.urlencoded({ extended: true }));
+  const useStatement = `app.use(${capitalize(moduleName)}Router);\n`;
+  if (!indexTsContent.includes(useStatement)) {
+    indexTsContent = indexTsContent.replace(
+      `app.use(express.urlencoded({extended: true}));`,
+      `app.use(express.urlencoded({extended: true}));\n${useStatement}`
+    );
+  }
+
+  await fs.writeFile(indexTsPath, indexTsContent, "utf8");
+  console.log(`✅ Module '${moduleName}' added successfully to index.ts.`);
 }
 
 function capitalize(str: string): string {
