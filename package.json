@@ -1,6 +1,6 @@
 {
   "name": "express-deploy",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A CLI to initialize Express project with boilerplate code",
   "main": "dist/index.js",
   "bin": {
