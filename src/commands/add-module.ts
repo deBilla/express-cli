@@ -63,7 +63,7 @@ export async function addModule(moduleName: string): Promise<void> {
   }
 
   // Add app.use() for the new module after app.use(express.urlencoded({ extended: true }));
-  const useStatement = `app.use(${capitalize(moduleName)}Router);`;
+  const useStatement = `app.use('/v1/${moduleName}', ${capitalize(moduleName)}Router);`;
   if (!indexTsContent.includes(useStatement)) {
     indexTsContent = indexTsContent.replace(
       `app.use(express.urlencoded({extended: true}));`,
@@ -86,7 +86,7 @@ async function updateConfigFile(moduleName: string): Promise<void> {
   let configContent = await fs.readFile(configPath, "utf8");
 
   const tableName = moduleName.charAt(0).toLowerCase() + moduleName.slice(1);
-  const tableEntry = `${tableName}Table: "${tableName}",`;
+  const tableEntry = `${tableName}Table: "${tableName}s",`;
 
   // Ensure the table entry is added only if it doesn’t already exist
   if (!configContent.includes(tableEntry)) {
