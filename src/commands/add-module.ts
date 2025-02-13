@@ -29,6 +29,7 @@ async function fetchFilesFromGitHub(
         const fileResponse = await axios.get(file.download_url);
         let updatedContent = fileResponse.data.replace(/SampleModule/g, capitalize(moduleName));
         updatedContent = updatedContent.replace(/sample-module/g, moduleName);
+        updatedContent = updatedContent.replace(/sampleModule/g, moduleName);
         
         await fs.writeFile(filePath, updatedContent, "utf8");
         console.log(`Created: ${filePath}`);
@@ -62,7 +63,7 @@ export async function addModule(moduleName: string): Promise<void> {
   }
 
   // Add app.use() for the new module after app.use(express.urlencoded({ extended: true }));
-  const useStatement = `app.use(${capitalize(moduleName)}Router);\n`;
+  const useStatement = `app.use(${capitalize(moduleName)}Router);`;
   if (!indexTsContent.includes(useStatement)) {
     indexTsContent = indexTsContent.replace(
       `app.use(express.urlencoded({extended: true}));`,
@@ -70,10 +71,31 @@ export async function addModule(moduleName: string): Promise<void> {
     );
   }
 
+  await updateConfigFile(moduleName);
+
   await fs.writeFile(indexTsPath, indexTsContent, "utf8");
   console.log(`✅ Module '${moduleName}' added successfully to index.ts.`);
 }
 
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+async function updateConfigFile(moduleName: string): Promise<void> {
+  const configPath = path.join(process.cwd(), "src/server-config", "configurations.ts");
+  let configContent = await fs.readFile(configPath, "utf8");
+
+  const tableName = moduleName.charAt(0).toLowerCase() + moduleName.slice(1);
+  const tableEntry = `${tableName}Table: "${tableName}",`;
+
+  // Ensure the table entry is added only if it doesn’t already exist
+  if (!configContent.includes(tableEntry)) {
+    configContent = configContent.replace(
+      /postgres:\s*{([\s\S]*?)pool:/,
+      `postgres: {\n    ${tableEntry}\n    $1pool:`
+    );
+
+    await fs.writeFile(configPath, configContent, "utf8");
+    console.log(`✅ Updated config.ts with ${moduleName} table.`);
+  }
 }
