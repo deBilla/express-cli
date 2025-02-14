@@ -1,57 +1,66 @@
 # Express Init CLI With Boilerplate (`express-deploy`)
 
-A simple CLI tool to initialize a Express project with a custom boilerplate, add modules, and add Express services.
+A simple CLI tool to initialize an Express project with a structured boilerplate, add modules dynamically, and extend Express services—**originally built for PostgreSQL integration**.
 
-## 🚀 Features
+## 🚀 Features  
 
-- Initializes a Express project with a predefined boilerplate.
-- Adds modules to an existing Express project.
-- Adds Express services (e.g., Firestore, Functions) to the project.
-- Fully written in TypeScript.
+- Initializes an Express project with a predefined **PostgreSQL-connected** boilerplate.
+- Joi integreated for request validation 
+- Adds modules dynamically while auto-configuring necessary files.  
+- Supports adding Express services (e.g., Firestore, Redis, Auth).  
+- Fully written in **TypeScript** for scalability and maintainability.  
 
 ---
 
-## 📦 Installation
+## 📦 Installation  
 
-### **Install Globally**
-To install the CLI globally, run:
+### **Install Globally**  
+To install the CLI globally, run:  
 
 ```bash
 npm install -g express-deploy
 ```
 
-## 🔧 Usage
-Run the CLI by using the following command:
+---
 
-```
+## 🔧 Usage  
+
+Run the CLI using the following command:  
+
+```bash
 express-deploy <command> [options]
 ```
 
-## Commands:
-Initialize the project
+### Commands:  
 
-```
+#### **Initialize a New Project**  
+Creates a new Express project with PostgreSQL integration:  
+
+```bash
 express-deploy init <project-name>
 ```
 
-Go inside the project to functions folder
+Navigate to the project folder:  
 
-```
-cd <project-name>/functions
+```bash
+cd <project-name>
 ```
 
-Install dependencies
+Install dependencies:  
 
-```
+```bash
 yarn install
 ```
 
-Add a Module
+#### **Add a New Module**  
+Easily extend your app by adding a new module (e.g., `user`):  
 
-```
+```bash
 express-deploy add module user
 ```
 
+---  
 
+🚀 Get started today and streamline your Express + PostgreSQL development!  
 
-# express-deploy
+#express #nodejs #typescript #postgres #cli #npm
